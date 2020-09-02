@@ -1,7 +1,10 @@
 package hangman.model;
 
+import com.google.inject.Inject;
+
 public class OriginalScore extends GameScore
 {
+	@Inject
 	public OriginalScore()
 	{
 		super(100);

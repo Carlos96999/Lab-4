@@ -1,7 +1,10 @@
 package hangman.model;
 
+import com.google.inject.Inject;
+
 public class BonusScore extends GameScore
 {
+	@Inject
 	public BonusScore()
 	{
 		super(0);
