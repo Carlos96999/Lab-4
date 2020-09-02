@@ -2,16 +2,18 @@ package hangman;
 
 import org.junit.Assert;
 import org.junit.Test;
+import hangman.model.*;
 
 public class GameScoreTest
 {
 	@Test
-	public void deberiaPasarOriginalScore()
+	public void deberiaPasarOriginalScoreLimiteInferior()
 	{
 		boolean result = false;
 		GameScore score = new OriginalScore();
+		score.calculateScore(2, 10);
 		
-		if(0 <= score.getScore() <= 100)
+		if(0 <= score.getScore() && score.getScore() <= 100)
 		{
 			result = true;
 		}
@@ -19,12 +21,13 @@ public class GameScoreTest
 	}
 	
 	@Test
-	public void deberiaPasarBonusScore()
+	public void deberiaPasarBonusScoreLimiteInferior()
 	{
 		boolean result = false;
 		GameScore score = new BonusScore();
+		score.calculateScore(0, 20);
 		
-		if(0 <= score.getScore() <= 100)
+		if(0 <= score.getScore() && score.getScore() <= 100)
 		{
 			result = true;
 		}
@@ -32,12 +35,41 @@ public class GameScoreTest
 	}
 	
 	@Test
-	public void deberiaPasarPowerBonusScrore()
+	public void deberiaPasarBonusScoreLimiteSuperior()
 	{
 		boolean result = false;
-		GameScore score = new PowerBonusScore();
+		GameScore score = new BonusScore();
+		score.calculateScore(0, 10);
 		
-		if(0 <= score.getScore() <= 9999999999999999999999)
+		if(0 <= score.getScore() && score.getScore() <= 100)
+		{
+			result = true;
+		}
+		Assert.assertEquals(result, true);
+	}
+	
+	@Test
+	public void deberiaPasarPowerBonusScroreLimiteInferior()
+	{
+		boolean result = false;
+		GameScore score = new PowerScore();
+		score.calculateScore(0, 0);
+		
+		if(0 <= score.getScore() && score.getScore() <= 99999999)
+		{
+			result = true;
+		}
+		Assert.assertEquals(result, true);
+	}
+	
+		@Test
+	public void deberiaPasarPowerBonusScroreLimiteSuperior()
+	{
+		boolean result = false;
+		GameScore score = new PowerScore();
+		score.calculateScore(6, 5);
+		
+		if(0 <= score.getScore() && score.getScore() <= 99999999)
 		{
 			result = true;
 		}
@@ -49,6 +81,7 @@ public class GameScoreTest
 	{
 		boolean result = true;
 		GameScore score = new OriginalScore();
+		score.calculateScore(0, 15);
 		
 		if(score.getScore() < 0 || score.getScore() > 100)
 		{
@@ -62,6 +95,7 @@ public class GameScoreTest
 	{
 		boolean result = true;
 		GameScore score = new OriginalScore();
+		score.calculateScore(0, 15);
 		
 		if(score.getScore() < 0 || score.getScore() > 100)
 		{
@@ -75,6 +109,7 @@ public class GameScoreTest
 	{
 		boolean result = true;
 		GameScore score = new OriginalScore();
+		score.calculateScore(0, 15);
 		
 		if(score.getScore() < 0)
 		{

@@ -14,10 +14,16 @@ public abstract class GameScore
 		this.score = score;
 	}
 	
+	public int getScore()
+	{
+		return score;
+	}
+	
+	/*
 	@pre	El puntaje a ingresar tiene que ser mayor o igual a cero
 	@pos
 	@param correctCount
 	@param incorrectCount
-	@throws 
+	@throws */
 	public abstract int calculateScore(int correctCount, int incorrectCount);
 }
